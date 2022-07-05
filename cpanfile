@@ -7,5 +7,6 @@ requires 'Convert::ASN1';
 on 'test' => sub {
     requires 'Test::More', '0.98';
     requires 'IO::Socket::INET';
+    requires 'Socket';
 };
 

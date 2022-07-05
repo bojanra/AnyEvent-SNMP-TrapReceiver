@@ -52,6 +52,7 @@
       "test" : {
          "requires" : {
             "IO::Socket::INET" : "0",
+            "Socket" : "0",
             "Test::More" : "0.98"
          }
       }
@@ -68,7 +69,7 @@
          "web" : "https://github.com/bojanra/AnyEvent-SNMP-TrapReceiver"
       }
    },
-   "version" : "0.15",
+   "version" : "0.16",
    "x_contributors" : [
       "Bojan Ramšak <bojan.ramsak@rtvslo.si>"
    ],

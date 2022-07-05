@@ -8,7 +8,7 @@ use AnyEvent::Handle::UDP;
 use Convert::ASN1;
 use Carp;
 
-our $VERSION = "0.15";
+our $VERSION = "0.16";
 
 ########################################################
 # Start Variables
@@ -206,6 +206,19 @@ The IP address and port to bind the UDP listener/handle.
 =head2 cb
 
 The codeblock to be called when a trap is received.
+
+=head1 TIPS&TRICKS
+
+The default port for SNMP traps is 162. In Linux ports below 1024 are privileged ports and typically
+only root can acccess these ports. If you don't want to run your script as root user you can use
+
+  iptables -A PREROUTING -t nat -i eth0 -p udp -m udp --dport 162 -j REDIRECT --to-ports 1162
+
+to redirect the port.
+You can go even further and redirect only traps from specific sources to your app
+
+  iptables -A PREROUTING -t nat -i eth0 -s 192.168.33.16/32 -p udp -m udp --dport 162 -j REDIRECT --to-ports 1162
+
 
 =head1 LICENSE
 
